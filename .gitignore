@@ -35,4 +35,4 @@ terraform/terraform.tfvars
 Thumbs.db
 
 # Pacotes temporários do deploy
-deploy.tar.gz
+deploy.tar.gzAWSCLIV2.pkg
