@@ -18,6 +18,7 @@ htmlcov/
 terraform/.terraform/
 terraform/*.tfstate
 terraform/*.tfstate.*
+terraform/tfplan
 terraform/*.tfplan
 terraform/.terraform.lock.hcl
 terraform/terraform.tfvars
