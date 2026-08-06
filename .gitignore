@@ -1,0 +1,38 @@
+# Ambiente virtual
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Configurações locais
+.env
+.env.*
+!.env.example
+
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/*.tfplan
+terraform/.terraform.lock.hcl
+terraform/terraform.tfvars
+
+# Chaves privadas
+*.pem
+*.key
+
+# IDE
+.vscode/
+.idea/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Pacotes temporários do deploy
+deploy.tar.gz

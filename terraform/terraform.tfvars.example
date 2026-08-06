@@ -1,0 +1,8 @@
+aws_region    = "us-east-1"
+project_name  = "flask-devops-api"
+environment   = "academy"
+instance_type = "t2.micro"
+key_name      = "devops-api-key"
+
+# Troque pelo seu IP público seguido de /32.
+ssh_cidr = "177.182.223.172/32"
