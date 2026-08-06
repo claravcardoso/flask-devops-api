@@ -1,6 +1,7 @@
 name: CD - Entrega Contínua
 
 on:
+  workflow_dispatch:
   workflow_run:
     workflows:
       - CI - Integração Contínua
@@ -19,14 +20,14 @@ concurrency:
 jobs:
   deploy:
     name: Deploy na Amazon EC2
-    if: github.event.workflow_run.conclusion == 'success'
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
 
     steps:
       - name: Baixar código aprovado
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ github.event.workflow_run.head_sha || github.ref }}
 
       - name: Criar chave SSH
         env:
@@ -54,7 +55,7 @@ jobs:
         env:
           EC2_HOST: ${{ secrets.EC2_HOST }}
           EC2_USER: ${{ secrets.EC2_USER }}
-          APP_VERSION: ${{ github.event.workflow_run.head_sha }}
+          APP_VERSION: ${{ github.sha }}
         run: |
           ssh -i ~/.ssh/ec2_key.pem "${EC2_USER}@${EC2_HOST}" "
             mkdir -p /opt/flask-devops-api &&
@@ -73,5 +74,3 @@ jobs:
       - name: Limpar chave temporária
         if: always()
         run: rm -f ~/.ssh/ec2_key.pem deploy.tar.gz
-
-        ##
