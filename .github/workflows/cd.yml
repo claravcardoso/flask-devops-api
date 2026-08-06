@@ -73,3 +73,5 @@ jobs:
       - name: Limpar chave temporária
         if: always()
         run: rm -f ~/.ssh/ec2_key.pem deploy.tar.gz
+
+        ##
